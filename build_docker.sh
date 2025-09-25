@@ -1,3 +1,3 @@
-#!/bin/zsh
+#!/bin/bash
 
-docker build -t genflowchart .
+docker build -t genflowchart -f Dockerfile.cuda .

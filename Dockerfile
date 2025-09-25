@@ -14,6 +14,9 @@ ARG USER_GID=1000
 RUN groupadd -g ${USER_GID} ${USERNAME} && \
     useradd -m -s /bin/bash -u ${USER_UID} -g ${USER_GID} ${USERNAME}
 
+# Install tesseract
+RUN apt-get update && apt install -y tesseract-ocr libtesseract-dev
+
 USER ${USERNAME}
 WORKDIR /workspace
 
