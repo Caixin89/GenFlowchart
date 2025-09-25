@@ -11,6 +11,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     openssh-client \
     && rm -rf /var/lib/apt/lists/*
 
+# ---- Install Tesseract
+RUN apt-get update && apt install -y tesseract-ocr libtesseract-dev
+
 # ---- Create a non-root user (uid/gid 1000) ----
 ARG USERNAME=developer
 ARG USER_UID=1000
@@ -76,3 +79,4 @@ EXPOSE 8888
 # tini for proper signal handling; start JupyterLab
 ENTRYPOINT ["/usr/bin/tini", "--"]
 CMD ["bash", "-lc", "jupyter lab --ip=0.0.0.0 --port=8888 --no-browser"]
+
