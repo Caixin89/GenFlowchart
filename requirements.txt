@@ -12,3 +12,4 @@ jupyter_bbox_widget
 roboflow
 dataclasses-json
 supervision
+openpyxl
