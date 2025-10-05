@@ -81,4 +81,4 @@ ENTRYPOINT ["/usr/bin/tini", "--"]
 CMD ["bash", "-lc", "jupyter lab --ip=0.0.0.0 --port=8888 --no-browser"]
 
 # pre-download BertScore default model
-RUN python -c 'from bert_score import score; score(["hello world"], ["hello world"], , lang="en")'
+RUN python -c 'from bert_score import score; score(["hello world"], ["hello world"], lang="en")'
