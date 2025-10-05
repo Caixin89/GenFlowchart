@@ -9,4 +9,5 @@ docker run \
     -v $PWD/GenFlowchart.ipynb:/home/zhengxin.chai/GenFlowchart/GenFlowchart.ipynb \
     -v $PWD/outputs:/home/zhengxin.chai/GenFlowchart/outputs \
     -p 8888:8888 \
-    genflowchart-cpu
+    --gpus all \
+    genflowchart-gpu

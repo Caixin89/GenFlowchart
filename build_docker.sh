@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker build -t genflowchart -f Dockerfile.cuda .
+docker build -t genflowchart-cpu -f Dockerfile .

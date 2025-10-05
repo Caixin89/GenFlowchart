@@ -38,15 +38,18 @@ RUN pip install -r requirements.txt
 
 # Install SAM
 RUN mkdir weights
-RUN cd weights && wget -q https://dl.fbaipublicfiles.com/segment_anything/sam_vit_h_4b8939.pth
+RUN cd weights && wget https://dl.fbaipublicfiles.com/segment_anything/sam_vit_h_4b8939.pth
 
 # Download some test data
 RUN mkdir data
-RUN cd data && wget -q https://media.roboflow.com/notebooks/examples/dog.jpeg && \
-     wget -q https://media.roboflow.com/notebooks/examples/dog-2.jpeg && \
-     wget -q https://media.roboflow.com/notebooks/examples/dog-3.jpeg && \
-     wget -q https://media.roboflow.com/notebooks/examples/dog-4.jpeg
+RUN cd data && wget https://media.roboflow.com/notebooks/examples/dog.jpeg && \
+     wget https://media.roboflow.com/notebooks/examples/dog-2.jpeg && \
+     wget https://media.roboflow.com/notebooks/examples/dog-3.jpeg && \
+     wget https://media.roboflow.com/notebooks/examples/dog-4.jpeg
 
 EXPOSE 8888
 ENTRYPOINT ["/usr/bin/tini","--"]
 CMD ["bash","-lc","jupyter lab --ip=0.0.0.0 --port=8888 --no-browser"]
+
+# pre-download BertScore default model
+RUN python -c 'from bert_score import score; score(["hello world"], ["hello world"], lang="en")'
