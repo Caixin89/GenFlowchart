@@ -13,3 +13,4 @@ roboflow
 dataclasses-json
 supervision
 openpyxl
+gensim

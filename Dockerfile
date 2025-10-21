@@ -53,3 +53,9 @@ CMD ["bash","-lc","jupyter lab --ip=0.0.0.0 --port=8888 --no-browser"]
 
 # pre-download BertScore default model
 RUN python -c 'from bert_score import score; score(["hello world"], ["hello world"], lang="en")'
+
+# pre-download word2vec pretrained model
+RUN python -c 'import gensim.downloader as api; api.load("word2vec-google-news-300")'
+
+# pre-download sentence-transformer models
+RUN python -c 'from sentence_transformers import SentenceTransformer; SentenceTransformer("paraphrase-MiniLM-L6-v2"); SentenceTransformer("sentence-transformers/all-MiniLM-L6-v2")'
